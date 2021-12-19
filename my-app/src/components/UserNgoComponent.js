@@ -8,7 +8,7 @@ import NgoModel from "../model/NgoModel"
 const UserNgoComponent = () => {
 
     const [ngoData, setNgoData] = useState(new NgoModel());
-
+    const [training, setTraining] = useState({});
     const dispatch = useDispatch();
 
     const ngoDataFromStore = useSelector((state) => state.ngo.ngoState);
@@ -31,6 +31,7 @@ const UserNgoComponent = () => {
         console.log('submitGetNgoById');
         getNgoByIdService(ngoData.ngoId)
             .then((response) => {
+                setTraining(response.data.trainingCourse);
                 dispatch(getNgoById(response.data));             // Sending data to redux store
 
             })
@@ -122,6 +123,9 @@ const UserNgoComponent = () => {
                                             <th>donation</th>
                                             <th>ngoSize</th>
                                             <th>ngoActivities</th>
+                                            <th>Course Name</th>
+                                            <th>Course Duration</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -134,6 +138,8 @@ const UserNgoComponent = () => {
                                             <td>{ngoDataFromStore.donation}</td>
                                             <td>{ngoDataFromStore.ngoSize}</td>
                                             <td>{ngoDataFromStore.ngoActivities}</td>
+                                            <td>{training.courseName}</td>
+                                            <td>{training.courseDurationn}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -172,12 +178,25 @@ const UserNgoComponent = () => {
                                             <th>donation</th>
                                             <th>ngoSize</th>
                                             <th>ngoActivities</th>
+                                            <th>Course Name</th>
+                                            <th>Course Duration</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {ngoList.map((ngo, k) => {
                                             return (
-                                                <tr k={k}> <td>{ngo.ngoId}</td>  <td>{ngo.ngoName}</td> <td>{ngo.ngoLocation}</td> <td>{ngo.ngoType}</td> <td>{ngo.ngoMotive}</td> <td>{ngo.donation}</td> <td>{ngo.ngoSize}</td> <td>{ngo.ngoActivities}</td></tr>
+                                                <tr k={k}> <td>{ngo.ngoId}</td>
+                                                    <td>{ngo.ngoName}</td>
+                                                    <td>{ngo.ngoLocation}</td>
+                                                    <td>{ngo.ngoType}</td>
+                                                    <td>{ngo.ngoMotive}</td>
+                                                    <td>{ngo.donation}</td>
+                                                    <td>{ngo.ngoSize}</td>
+                                                    <td>{ngo.ngoActivities}</td>
+                                                    <td>{ngo.trainingCourse.courseName}</td>
+                                                    <td>{ngo.trainingCourse.courseDurationn}</td>
+                                                </tr>
+
                                             )
                                         })}
                                     </tbody>
@@ -217,6 +236,8 @@ const UserNgoComponent = () => {
                                             <th>donation</th>
                                             <th>ngoSize</th>
                                             <th>ngoActivities</th>
+                                            <th>Course Name</th>
+                                            <th>Course Duration</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -230,6 +251,8 @@ const UserNgoComponent = () => {
                                                     <td>{ngo.donation}</td>
                                                     <td>{ngo.ngoSize}</td>
                                                     <td>{ngo.ngoActivities}</td>
+                                                    <td>{ngo.trainingCourse.courseName}</td>
+                                                    <td>{ngo.trainingCourse.courseDurationn}</td>
                                                 </tr>
                                             )
                                         })}
@@ -269,6 +292,8 @@ const UserNgoComponent = () => {
                                             <th>donation</th>
                                             <th>ngoSize</th>
                                             <th>ngoActivities</th>
+                                            <th>Course Name</th>
+                                            <th>Course Duration</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -282,6 +307,8 @@ const UserNgoComponent = () => {
                                                     <td>{ngo.donation}</td>
                                                     <td>{ngo.ngoSize}</td>
                                                     <td>{ngo.ngoActivities}</td>
+                                                    <td>{ngo.trainingCourse.courseName}</td>
+                                                    <td>{ngo.trainingCourse.courseDurationn}</td>
                                                 </tr>
                                             )
                                         })}
