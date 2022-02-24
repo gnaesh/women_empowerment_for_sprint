@@ -14,6 +14,8 @@ import TrainingCourseComponent from './components/TrainingCourseComponent';
 import UserTrainingCourseComponent from './components/UserTrainingCourseComponent';
 import FeedbackComponent from './components/FeedbackComponent';
 import UserFeedbackComponent from './components/UserFeedbackComponent';
+import TraineeComponent from './components/TraineeComponent';
+import UserTraineeComponent from './components/UserTraineeComponent';
 
 
 
@@ -27,6 +29,7 @@ const Routes = () => {
                     <div>
                         <Switch>
                             <Route exact path="/"> <Home /> </Route>
+                            <Route path="/home"> <Home /> </Route>
                             <Route path="/login"> <Login /> </Route>
                             <Route path="/register"> <Register /> </Route>
                             <Route path="/logout"> <Logout /> </Route>
@@ -41,11 +44,13 @@ const Routes = () => {
 
                             <Route path="/feedbackcomponent"> <FeedbackComponent /> </Route>
                             <Route path="/userfeedbackcomponent"> <UserFeedbackComponent /> </Route>
-                            
-                            <Route path="/page404"> <Page404 /> </Route>
+
+                            <Route path="/traineecomponent"> <TraineeComponent /> </Route>
+                            <Route path="/usertraineecomponent"> <UserTraineeComponent /> </Route>
+
+                            <Route path="/*"> <Page404 /> </Route>
                         </Switch>
                     </div>
-                    {/* <Footer /> */}
                 </div>
             </Router>
         </div>

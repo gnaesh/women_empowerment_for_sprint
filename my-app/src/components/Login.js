@@ -1,12 +1,10 @@
-    import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from "axios";
 import User from "../model/User"
 
 const Login = () => {
-
-    // const history = useHistory();
 
     const [user, setUser] = useState(new User());
     const [credentials, setCredentials] = useState('');
@@ -40,7 +38,7 @@ const Login = () => {
     return (
         <div className="container">
             <div className="col-4 mt-3" >
-                <h1 className="display-4 text-primary">Login</h1>
+                <h1 className="display-4 text-primary text-center">Login</h1>
                 <form className="form form-group form-dark " onSubmit={submitUser}>
                     <div>
                         <input
